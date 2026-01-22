@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Formatter;
 import java.util.Random;
 import java.util.Scanner;
 public class Files_ProcesarNotas {
@@ -8,11 +9,22 @@ public class Files_ProcesarNotas {
         String matrizNotasOUT[][] = new String [m][n]; 
         matrizNotasIN = leerArchivo_LlenarMatriz("NotasIn.csv", m, n);
         matrizNotasOUT = procesarNotaIn(matrizNotasIN, m, n);
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(matrizNotasOUT[i][j] + " ");
+    }
+    public static void persistirResultados(String nombreArchivoOut, String matrizNotasIN[][], String matrizNotasOUT[][]){
+        try {
+            Formatter fout = new Formatter(new File(nombreArchivoOut));
+            fout.format("%s\n", "NOMBRES;NOTA1;NOTA2;PROMEDIO;SUPLE;ESTADO;");
+            for (int i = 0; i < matrizNotasIN.length; i++) {
+                for (int j = 0; j < matrizNotasIN[0].length; j++) {
+                    fout.format("%s;", matrizNotasIN[i][j]);
+                }
+                for (int j = 0; j < matrizNotasOUT[0].length; j++) {
+                    fout.format("%s;", matrizNotasOUT[i][j]);
+                }
+                fout.format("%s","\n");
             }
-            System.out.println("");
+            fout.close();
+        } catch (Exception e) {
         }
     }
     public static String [][] procesarNotaIn(String matrizNotasIN[][], int m, int n){
