@@ -14,7 +14,11 @@ public class Files_ProcesarNotas {
             linea = fin.nextLine();
             while(fin.hasNext()){
                 linea = fin.nextLine();
-                System.out.println(linea);
+                String datos [] = linea.split(";");
+                System.out.println(datos.length);
+                datosNotas[i][0] = datos[0]; //Nombre est.
+                datosNotas[i][1] = datos[1]; //Nota1.
+                datosNotas[i][2] = datos[2]; //NOta2.
             }
         } catch (Exception e) {
             System.out.println("ERROR");
