@@ -36,7 +36,16 @@ public class Files_ProcesarNotas {
             double n2 = Double.valueOf(matrizNotasIN[i][2]);
             double promedio = ( n1 + n2 ) / 2;
             double suple = (promedio < 6.5) ? ale.nextDouble(10) : 0.0 ;
-            String estado = (promedio >= 6.5) ? "APROBADO" : ( (suple >= 6.5) ? "APROBADO" : "REPROBADO" ) ;
+            //String estado = (promedio >= 6.5) ? "APROBADO" : ( (suple >= 6.5) ? "APROBADO" : "REPROBADO" ) ;
+            String estado="";
+            if (promedio >= 6.5) 
+                estado = "APROBADO";
+            else
+                if (suple >= 6.5)
+                    estado = "APROBADO";
+                else
+                    estado = "REPROBADO";
+            
             datosNotas[i][0] = String.valueOf(promedio);
             datosNotas[i][1] = String.valueOf(suple);
             datosNotas[i][2] = estado;
