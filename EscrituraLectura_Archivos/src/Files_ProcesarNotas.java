@@ -9,6 +9,7 @@ public class Files_ProcesarNotas {
         String matrizNotasOUT[][] = new String [m][n]; 
         matrizNotasIN = leerArchivo_LlenarMatriz("NotasIn.csv", m, n);
         matrizNotasOUT = procesarNotaIn(matrizNotasIN, m, n);
+        persistirResultados("NotasOut.csv",matrizNotasIN, matrizNotasOUT);
     }
     public static void persistirResultados(String nombreArchivoOut, String matrizNotasIN[][], String matrizNotasOUT[][]){
         try {
